@@ -18,5 +18,5 @@ response = requests.get(api_url)
 data_in_json = response.json()
 
 #save the result as json
-with open('./data/json/top_players.json', 'w') as outfile:
+with open('../data/json/top_players.json', 'w') as outfile:
     json.dump(data_in_json, outfile, indent = 4) #indent = 4 makes the file human-readable
