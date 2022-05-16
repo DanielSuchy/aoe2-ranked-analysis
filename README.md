@@ -19,3 +19,7 @@ descriptive:
   1v1 / teamgame elo comparison
 predictive:
   ANN for teamgames
+
+for now, the task consists of two parts:
+  downloading the data - sripts will be commited, but data ignored, since it always changes
+  analyzing the data - based on a stable snapshot of the data commited into the repository
