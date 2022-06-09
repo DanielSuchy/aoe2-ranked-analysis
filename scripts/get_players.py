@@ -2,7 +2,7 @@
 import pandas as pd
 from tools import use_api
 
-path = '../data/players.csv'
+path = '../data/latest/players.csv'
 datatype="leaderboard"
 leaderboard_id = str(3) #download the 1v1 ranked leaderboard
 
