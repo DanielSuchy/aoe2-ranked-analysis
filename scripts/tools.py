@@ -22,14 +22,14 @@ def use_api(datatype, matchtype, game="aoe2de", start=None, count=None, profile_
     data_in_json = response.json()
     return data_in_json
 
-def substract_30_days():
+def substract_n_days(days):
     today = datetime.now()
-    month_ago = today - timedelta(30) # within the last 30 days
-    return datetime.timestamp(month_ago) 
+    days_ago = today - timedelta(days) # within the last e.g. 30 days
+    return datetime.timestamp(days_ago) 
 
 #the goal here is to get players likely to be new, to shorten dwnld time
 def get_new_players(leaderboard):
-    month_ago = substract_30_days()    
+    month_ago = substract_n_days(30)    
     players = pd.read_csv(leaderboard)
     players = players[players.games < 50] # more likely to be new
     #players = players[players.highest_rating<1500] # less likely to be smurfs

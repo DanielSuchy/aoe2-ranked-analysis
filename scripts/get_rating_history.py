@@ -3,16 +3,17 @@
 import pandas as pd
 from tools import use_api, get_new_players
     
-leaderboard = '../data/latest/players.csv'
+leaderboard = '../data/latest/new_players.csv'
 path = '../data/latest/ratinghistory.csv'
 datatype="ratinghistory"
 leaderboard_id = str(3) #download the 1v1 ranked leaderboard
 
 new_players = get_new_players(leaderboard)
+new_players = new_players[~new_players['plays_1v1s'].isnull()]
 
 for i, profile_id in enumerate(new_players.profile_id):    
     print('player', i + 1, 'out of', len(new_players))
-    matches = use_api(datatype=datatype, matchtype=leaderboard_id, profile_id=profile_id, count=40)
+    matches = use_api(datatype=datatype, matchtype=leaderboard_id, profile_id=profile_id, count=60)
     for match in matches:
         match['profile_id'] = profile_id
 
