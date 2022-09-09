@@ -12,7 +12,6 @@ empwars_team=14
 players_path = '../data/latest/players.csv'
 players_data = get_new_players(players_path)
 player_ids = players_data['profile_id']
-player_ids = player_ids.tail(100)
 
 for i, player_id in enumerate(player_ids):
     print("Getting matchtype experience, player:", i + 1, "out of:", len(player_ids))
@@ -30,4 +29,4 @@ for i, player_id in enumerate(player_ids):
     players_data.loc[players_data['profile_id'] == int(player_id), 'plays_team_empwars'] = plays_team_empwars;
     
 #save the data
-players_data.to_csv('../data/latest/new_players.csv', index=False)
+players_data.to_csv('../data/latest/candidate_players.csv', index=False)

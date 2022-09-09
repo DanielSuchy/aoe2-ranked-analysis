@@ -4,8 +4,8 @@ from datetime import datetime
 from tools import substract_n_days
 
 #load the data
-players_path = '../data/latest/new_players.csv'
-ratings_path = '../data/latest/ratinghistory.csv'
+players_path = '../data/latest/candidate_players.csv'
+ratings_path = '../data/latest/candidate_players_ratinghistory.csv'
 players = pd.read_csv(players_path, index_col='profile_id')
 ratings = pd.read_csv(ratings_path)
 
@@ -32,6 +32,6 @@ for profile_id in profile_ids:
         #i = players[players.profile_id == profile_id].index
         players = players.drop(index=profile_id)
         
-relevant_players_path = '../data/latest/relevant_new_players.csv'
+relevant_players_path = '../data/latest/new_players.csv'
 players.to_csv(relevant_players_path)
     

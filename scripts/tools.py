@@ -32,7 +32,6 @@ def get_new_players(leaderboard):
     month_ago = substract_n_days(30)    
     players = pd.read_csv(leaderboard)
     players = players[players.games < 50] # more likely to be new
-    #players = players[players.highest_rating<1500] # less likely to be smurfs
     players = players[players.last_match_time > month_ago] # are recently active
     
     return players

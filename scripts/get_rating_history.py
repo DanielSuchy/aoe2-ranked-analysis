@@ -1,15 +1,14 @@
-#download the 1v1 ranked rating history for new players
+#download the 1v1 ranked rating history for relatively new players
 #doing so for all players takes too much time for now
 import pandas as pd
 from tools import use_api, get_new_players
     
-leaderboard = '../data/latest/new_players.csv'
-path = '../data/latest/ratinghistory.csv'
+leaderboard = '../data/latest/players.csv'
+path = '../data/latest/candidate_players_ratinghistory.csv'
 datatype="ratinghistory"
 leaderboard_id = str(3) #download the 1v1 ranked leaderboard
 
-new_players = get_new_players(leaderboard)
-new_players = new_players[~new_players['plays_1v1s'].isnull()]
+new_players = get_new_players(leaderboard) # played less than month ago, have less than 50 games
 
 for i, profile_id in enumerate(new_players.profile_id):    
     print('player', i + 1, 'out of', len(new_players))
