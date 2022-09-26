@@ -9,12 +9,17 @@ standard_team=4
 empwars_1v1=13
 empwars_team=14
 
-players_path = '../data/latest/players.csv'
+players_path = '../data/latest/candidate_players.csv'
 players_data = get_new_players(players_path)
 player_ids = players_data['profile_id']
 
 for i, player_id in enumerate(player_ids):
     print("Getting matchtype experience, player:", i + 1, "out of:", len(player_ids))
+    
+    #continue processing where it last finnished
+    processed = players_data.loc[players_data['profile_id'] == int(player_id), 'plays_unranked']
+    if processed.isna().bool() == False:
+        continue
     
     plays_unranked = bool(use_api(datatype='ratinghistory', matchtype=unranked, profile_id=player_id, count=1))
     plays_1v1 = bool(use_api(datatype='ratinghistory', matchtype=standard_1v1, profile_id=player_id, count=1))
